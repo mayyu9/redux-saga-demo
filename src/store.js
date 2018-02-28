@@ -11,6 +11,6 @@ const configureStore = createStore(
 );
 
 sagas.map(saga => (sagaMiddleware.run(saga)));
-//sagaMiddleware.run(watchFetchDog);
+
 
 export default configureStore;

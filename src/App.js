@@ -15,6 +15,7 @@ class App extends Component {
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
         <hr />
+        /* adding the declation for the statefull container component */
         <div>
         <DemoContainer />
         </div>

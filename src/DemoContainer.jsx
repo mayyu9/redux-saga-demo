@@ -8,14 +8,13 @@ import dogReducer from './reducers';
 class DemoContainer extends React.Component {
   constructor(props){
     super(props);
-    this.onClick= this.onClick.bind(this);
+    this.onClick= this.onClick.bind(this); /*we have to bind the click action so that scope of this is available*/
   }
   onClick(event){
     event.preventDefault();
     this.props.getDog();
   }
   render () {
-    //console.log("demo container: "url);
     return (
       <div>
         <button onClick={this.onClick}>Show Dog</button>
@@ -29,16 +28,16 @@ class DemoContainer extends React.Component {
   }
 }
 
+/* when the store updated with new value, we read those values using mapStateToProps*/
 const mapStateToProps = state => ({
-  //patientAttendanceData: state.patientAttendanceState.patientAttendance,
   url: state.dogState.url,
   loading: state.dogState.loading,
   error: state.dogState.error,
 });
 
+/* we dispatch actions using mapDispatchToProps*/
 const mapDispatchToProps = (dispatch) => ({
   getDog: () => {
-    console.log("mapDispatchToProps - getDog");
     dispatch(fetchDog());
   }
 });
@@ -46,5 +45,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 export default connect(mapStateToProps,mapDispatchToProps)(DemoContainer);
 
+/*creating reducer object using object.assign */
 const reducer = Object.assign({}, { dogState: dogReducer })
 export { reducer}
